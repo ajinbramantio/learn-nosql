@@ -58,9 +58,12 @@ app.delete('/users/:id', async (req, res) => {
 })
 
 app.delete('/users', async (req, res) => {
-  let user = await User.find()
-  deleteUsers = []
-  console.log(user)
+  await User.deleteMany()
+
+  res.send({
+    message: 'Deleted all users',
+    users: await User.find()
+  })
 })
 
 app.listen(port, () => {
