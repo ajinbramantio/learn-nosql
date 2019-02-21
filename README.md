@@ -1,5 +1,6 @@
-#Learn noSQL
-Loearn NoQSL with:
+# Learn NoSQL
 
--PouchDB
--MongoDB
+Learn NoQSL with:
+
+- MongoDB
+- Mongoose
