@@ -66,6 +66,14 @@ app.delete('/users', async (req, res) => {
   })
 })
 
+app.put('/users/action/unset-name', async (req, res) => {
+  await User.updateMany({}, { $unset: { name: 1 } })
+
+  res.send({
+    message: 'Updated all users'
+  })
+})
+
 app.listen(port, () => {
   console.log(`Express aap is Running ${port}`)
 })
