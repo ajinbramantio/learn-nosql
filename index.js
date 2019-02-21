@@ -11,11 +11,13 @@ const mongoose = require('mongoose')
 mongoose.connect(`${process.env.URL}/${process.env.DB_NAME}`, {
   useNewUrlParser: true
 })
+
 const User = mongoose.model('User', {
   name: String,
   age: Number,
   email: String
 })
+
 app.get('/', (req, res) => {
   res.send({
     message: 'Hello Word'
@@ -46,12 +48,13 @@ app.post('/users', async (req, res) => {
 
 app.delete('/users/:id', async (req, res) => {
   const id = req.params.id
-  let dataLists = await User.find()
-  let data = dataLists.filter(dataList => {
-    return dataList.id !== id
-  })
 
-  res.send({ data })
+  await User.findByIdAndDelete(id)
+
+  res.send({
+    message: 'Deleted one user by id',
+    id: id
+  })
 })
 
 app.delete('/users', async (req, res) => {
