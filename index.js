@@ -51,7 +51,7 @@ app.delete('/users/:id', async (req, res) => {
     return dataList.id !== id
   })
 
-  res.send({ dataLists })
+  res.send({ data })
 })
 
 app.delete('/users', async (req, res) => {
